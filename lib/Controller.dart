@@ -42,7 +42,7 @@ class _ControllerState extends State<Controller> {
             ),
           ),
           title: const Text(
-            "Irbid | أربد",
+            "إربد",
             style: TextStyle(
               fontSize: 20,
 
@@ -274,7 +274,7 @@ class _ControllerState extends State<Controller> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: const [
           Text(
-            "IRBID | إربد",
+            "إربد",
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
