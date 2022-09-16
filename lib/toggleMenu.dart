@@ -51,6 +51,8 @@ class _ToggleTourismTypesState extends State<ToggleTourismTypes>
           });
         },
         color: Colors.black,
+        hoverColor: Colors.green,
+        // highlightColor: Colors.green.shade100,
         splashColor: Colors.green.shade500,
         selectedBorderColor: Colors.green,
         borderColor: Colors.green.shade700,
