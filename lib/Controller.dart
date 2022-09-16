@@ -30,12 +30,26 @@ class _ControllerState extends State<Controller> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(48.0),
+            ),
+          ),
           backgroundColor: Colors.transparent,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/irbidGreen.jpg",),
+                fit: BoxFit.cover,
+                opacity: 0.9,
+              )
+            ),
+          ),
           title: const Text(
             "Irbid | أربد",
             style: TextStyle(
               fontSize: 20,
-              color: Colors.black,
+
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -279,3 +293,4 @@ class _ControllerState extends State<Controller> {
     );
   }
 }
+

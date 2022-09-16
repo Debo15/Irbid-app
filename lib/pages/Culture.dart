@@ -10,6 +10,7 @@ class CulturePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: Colors.amber,
       body: Center(child: Text("this is the Culture page")),
     );
   }
