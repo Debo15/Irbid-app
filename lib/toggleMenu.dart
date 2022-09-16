@@ -60,7 +60,7 @@ class _ToggleTourismTypesState extends State<ToggleTourismTypes>
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         isSelected: isSelected.map((element) => element.value).toList(),
         children: const [
-          Text(" أستجمامة "),
+          Text(" استجمام "),
           Text(" علاجية "),
           Text(" تاريخية "),
         ],

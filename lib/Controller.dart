@@ -37,12 +37,8 @@ class _ControllerState extends State<Controller> {
           ),
           backgroundColor: Colors.transparent,
           flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/irbidGreen.jpg",),
-                fit: BoxFit.cover,
-                opacity: 0.9,
-              )
+            decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [Colors.green.shade500, Colors.green.shade900]),
             ),
           ),
           title: const Text(
@@ -60,8 +56,12 @@ class _ControllerState extends State<Controller> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Color(0xff003000),
+                  ),
                   padding: EdgeInsets.zero,
                   child: Stack(
+
                     children: [
                       _buildParallaxBackground(context),
                       _buildGradient(),
@@ -274,7 +274,7 @@ class _ControllerState extends State<Controller> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: const [
           Text(
-            "IRBID | أربد",
+            "IRBID | إربد",
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
