@@ -4,16 +4,13 @@
 
 import 'package:flutter/material.dart';
 
-
 class EducationPage extends StatelessWidget {
   const EducationPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home:Scaffold(
-        body: Center(child: Text("this is the education page")),
-      ),
+    return const Scaffold(
+      body: Center(child: Text("this is the education page")),
     );
   }
 }

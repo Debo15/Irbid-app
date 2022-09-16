@@ -4,16 +4,13 @@
 
 import 'package:flutter/material.dart';
 
-
 class EconomicPage extends StatelessWidget {
   const EconomicPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home:Scaffold(
-        body: Center(child: Text("this is the Economic page")),
-      ),
+    return const Scaffold(
+      body: Center(child: Text("this is the Economic page")),
     );
   }
 }
