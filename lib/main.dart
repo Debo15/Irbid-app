@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:irbid/Controller.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'generated/l10n.dart';
+import 'package:irbid/languageChangeProvider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,13 +14,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.green,
-        fontFamily: "NotoSans",
+    return ChangeNotifierProvider<LanguageChangeProvider>(
+      create: (context) => LanguageChangeProvider(),
+      child: Builder(
+        builder: (context) =>
+        MaterialApp(
+          locale: Provider.of<LanguageChangeProvider>(context, listen: true).currentLocale,
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: Colors.green,
+            fontFamily: "NotoSans",
+          ),
+          home: const Controller(),
+        ),
       ),
-      home: Controller(),
     );
   }
 }

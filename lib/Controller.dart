@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:irbid/languageChangeProvider.dart';
 import 'package:irbid/pages/Culture.dart';
 import 'package:irbid/pages/Economic.dart';
 import 'package:irbid/pages/Education.dart';
@@ -7,8 +8,13 @@ import 'package:irbid/pages/History.dart';
 import 'package:irbid/pages/HomePage.dart';
 import 'package:irbid/pages/Settings.dart';
 import 'package:irbid/pages/Tourism.dart';
+import 'package:provider/provider.dart';
+
+import 'generated/l10n.dart';
 
 class Controller extends StatefulWidget {
+  const Controller({super.key});
+
   @override
   _ControllerState createState() => _ControllerState();
 }
@@ -35,6 +41,15 @@ class _ControllerState extends State<Controller> {
               bottom: Radius.circular(48.0),
             ),
           ),
+          actions: <Widget>[
+            ElevatedButton(onPressed: (){
+              context.read<LanguageChangeProvider>().ChangeLocale("ar");
+            }, child: Text("Arabic")),
+            ElevatedButton(onPressed: (){
+              context.read<LanguageChangeProvider>().ChangeLocale("en");
+            }, child: Text("English")),
+
+          ],
           backgroundColor: Colors.transparent,
           flexibleSpace: Container(
             decoration: BoxDecoration(
@@ -73,16 +88,15 @@ class _ControllerState extends State<Controller> {
                   textColor: Colors.black,
                   iconColor: Colors.green,
                   title: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    // mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text(
-                        " الصفحة الرئيسية",
-                        style: TextStyle(
+                    children: <Widget> [
+                      const Icon(Icons.home),
+                      Text(S.of(context).test,
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Icon(Icons.home),
                     ],
                   ),
                   onTap: () {
