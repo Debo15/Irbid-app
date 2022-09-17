@@ -50,21 +50,91 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Irbid`
+  String get title {
+    return Intl.message(
+      'Irbid',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The north's pride`
+  String get dance {
+    return Intl.message(
+      'The north\'s pride',
+      name: 'dance',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Home page`
-  String get test {
+  String get homePage {
     return Intl.message(
       'Home page',
-      name: 'test',
+      name: 'homePage',
       desc: '',
       args: [],
     );
   }
 
   /// `Irbid history`
-  String get test2 {
+  String get irbidHis {
     return Intl.message(
       'Irbid history',
-      name: 'test2',
+      name: 'irbidHis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Culture in Irbid`
+  String get irbidCul {
+    return Intl.message(
+      'Culture in Irbid',
+      name: 'irbidCul',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Economy in Irbid`
+  String get irbidEco {
+    return Intl.message(
+      'Economy in Irbid',
+      name: 'irbidEco',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Education in Irbid`
+  String get irbidEdu {
+    return Intl.message(
+      'Education in Irbid',
+      name: 'irbidEdu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tourism in Irbid`
+  String get irbidTou {
+    return Intl.message(
+      'Tourism in Irbid',
+      name: 'irbidTou',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Health in Irbid`
+  String get irbidHeal {
+    return Intl.message(
+      'Health in Irbid',
+      name: 'irbidHeal',
       desc: '',
       args: [],
     );

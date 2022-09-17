@@ -56,9 +56,8 @@ class _ControllerState extends State<Controller> {
               gradient: LinearGradient(colors: [Colors.green.shade500, Colors.green.shade900]),
             ),
           ),
-          title: const Text(
-            "إربد",
-            style: TextStyle(
+          title: Text(S.of(context).title,
+            style: const TextStyle(
               fontSize: 20,
 
               fontWeight: FontWeight.bold,
@@ -92,7 +91,7 @@ class _ControllerState extends State<Controller> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget> [
                       const Icon(Icons.home),
-                      Text(S.of(context).test,
+                      Text(S.of(context).homePage,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -107,16 +106,15 @@ class _ControllerState extends State<Controller> {
                   textColor: Colors.black,
                   iconColor: Colors.green,
                   title: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    // mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text(
-                        " مدينة أربد وتاريخها",
-                        style: TextStyle(
+                    children: <Widget> [
+                      const Icon(Icons.location_city),
+                      Text(S.of(context).irbidHis,
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Icon(Icons.location_city),
                     ],
                   ),
                   onTap: () {
@@ -127,16 +125,15 @@ class _ControllerState extends State<Controller> {
                   textColor: Colors.black,
                   iconColor: Colors.green,
                   title: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    // mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text(
-                        " الثقافة في أربد",
-                        style: TextStyle(
+                    children: <Widget> [
+                      const Icon(Icons.groups),
+                      Text(S.of(context).irbidCul,
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Icon(Icons.groups),
                     ],
                   ),
                   onTap: () {
@@ -147,16 +144,15 @@ class _ControllerState extends State<Controller> {
                 textColor: Colors.black,
                 iconColor: Colors.green,
                 title: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  // mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "الأقتصاد في أربد",
-                      style: TextStyle(
+                  children: <Widget> [
+                    const Icon(Icons.data_exploration),
+                    Text(S.of(context).irbidEco,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Icon(Icons.data_exploration),
                   ],
                 ),
                 onTap: () {
@@ -168,16 +164,15 @@ class _ControllerState extends State<Controller> {
                 textColor: Colors.black,
                 iconColor: Colors.green,
                 title: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  // mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "التعليم في أربد",
-                      style: TextStyle(
+                  children: <Widget> [
+                    const Icon(Icons.menu_book),
+                    Text(S.of(context).irbidEdu,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Icon(Icons.menu_book),
                   ],
                 ),
                 onTap: () {
@@ -189,16 +184,15 @@ class _ControllerState extends State<Controller> {
                 textColor: Colors.black,
                 iconColor: Colors.green,
                 title: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  // mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "السياحة في أربد",
-                      style: TextStyle(
+                  children: <Widget> [
+                    const Icon(Icons.connecting_airports_rounded),
+                    Text(S.of(context).irbidTou,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Icon(Icons.connecting_airports_rounded),
                   ],
                 ),
                 onTap: () {
@@ -210,16 +204,15 @@ class _ControllerState extends State<Controller> {
                 textColor: Colors.black,
                 iconColor: Colors.green,
                 title: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  // mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "القطاع الصحي في أربد",
-                      style: TextStyle(
+                  children: <Widget> [
+                    const Icon(Icons.health_and_safety_outlined),
+                    Text(S.of(context).irbidHeal,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Icon(Icons.health_and_safety_outlined),
                   ],
                 ),
                 onTap: () {
@@ -231,7 +224,7 @@ class _ControllerState extends State<Controller> {
                 textColor: Colors.black,
                 iconColor: Colors.green,
                 title: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  // mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: const [
                     Text(
@@ -282,23 +275,21 @@ class _ControllerState extends State<Controller> {
   Widget _buildTitleAndSubtitle() {
     return Positioned(
 
-      right: 20,
+      // right: 20,
       bottom: 10,
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: const [
-          Text(
-            "إربد",
-            style: TextStyle(
+        // crossAxisAlignment: CrossAxisAlignment.end,
+        children: <Widget> [
+          Text(S.of(context).title, //Irbid
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
-          Text(
-            "عروس الشمال",
-            style: TextStyle(
+          Text(S.of(context).dance, //Arous Al-shamal
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 14,
             ),

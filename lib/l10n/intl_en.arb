@@ -1,4 +1,11 @@
 {
-  "test": "Home page",
-  "test2": "Irbid history"
+  "title": "Irbid",
+  "dance": "The north's pride",
+  "homePage": "Home page",
+  "irbidHis": "Irbid history",
+  "irbidCul": "Culture in Irbid",
+  "irbidEco": "Economy in Irbid",
+  "irbidEdu": "Education in Irbid",
+  "irbidTou": "Tourism in Irbid",
+  "irbidHeal": "Health in Irbid"
 }

@@ -22,7 +22,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "test": MessageLookupByLibrary.simpleMessage(" الصفحة الرئيسية"),
-        "test2": MessageLookupByLibrary.simpleMessage(" مدينة أربد وتاريخها")
+        "dance": MessageLookupByLibrary.simpleMessage("عروس الشمال"),
+        "homePage": MessageLookupByLibrary.simpleMessage("الصحفة الرئيسية"),
+        "irbidCul":
+            MessageLookupByLibrary.simpleMessage("الثقافة في مدينة إربد"),
+        "irbidEco":
+            MessageLookupByLibrary.simpleMessage("الإقتصاد في مدينة إربد"),
+        "irbidEdu":
+            MessageLookupByLibrary.simpleMessage("التعليم في مدينة إربد"),
+        "irbidHeal":
+            MessageLookupByLibrary.simpleMessage("القطاع الصحي في إربد"),
+        "irbidHis": MessageLookupByLibrary.simpleMessage("تاريخ مدينة إربد"),
+        "irbidTou": MessageLookupByLibrary.simpleMessage("السياحة في إربد"),
+        "title": MessageLookupByLibrary.simpleMessage("إربد")
       };
 }
