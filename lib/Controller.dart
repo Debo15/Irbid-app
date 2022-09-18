@@ -11,7 +11,6 @@ import 'package:provider/provider.dart';
 import 'generated/l10n.dart';
 import 'package:irbid/languageChangeProvider.dart';
 
-
 class Controller extends StatefulWidget {
   const Controller({super.key});
 
@@ -43,52 +42,60 @@ class _ControllerState extends State<Controller> {
               bottom: Radius.circular(48.0),
             ),
           ),
-          actions: <Widget> [
-            ToggleButtons(
-            constraints: const BoxConstraints(maxHeight: 90.0, minHeight: 35.1),
-              isSelected: isSelected,
-              selectedColor: Colors.green[900],
-              color: Colors.white,
-              fillColor: Colors.green.shade300,
-              textStyle: const TextStyle(fontWeight: FontWeight.bold),
-              renderBorder: true,
-              borderRadius: BorderRadius.circular(10),
-              children: const [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12),
-                  child: Text('ar', style: TextStyle(fontSize: 18)),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12),
-                  child: Text('en', style: TextStyle(fontSize: 18)),
-                ),
-              ],
-              onPressed: (int newIndex) {
-                setState(() {
-                  for (int index = 0; index < isSelected.length; index++) {
-                    if (index == newIndex) {
-                      context.read<LanguageChangeProvider>().ChangeLocale("en");
-                      isSelected[index] = true;
-                    }
-                    else {
-                      context.read<LanguageChangeProvider>().ChangeLocale("ar");
-                      isSelected[index] = false;
-                    }
-                  }
-                });
-              }
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ToggleButtons(
+                  constraints:
+                      const BoxConstraints(maxHeight: 90.0, minHeight: 35.1),
+                  isSelected: isSelected,
+                  selectedColor: Colors.green[900],
+                  color: Colors.white,
+                  // borderColor: Colors.transparent,
+                  fillColor: Colors.green.shade300,
+                  textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                  renderBorder: true,
+                  borderRadius: BorderRadius.circular(4),
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12),
+                      child: Text('ar', style: TextStyle(fontSize: 18)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12),
+                      child: Text('en', style: TextStyle(fontSize: 18)),
+                    ),
+                  ],
+                  onPressed: (int newIndex) {
+                    setState(() {
+                      for (int index = 0; index < isSelected.length; index++) {
+                        if (index == newIndex) {
+                          context
+                              .read<LanguageChangeProvider>()
+                              .ChangeLocale("en");
+                          isSelected[index] = true;
+                        } else {
+                          context
+                              .read<LanguageChangeProvider>()
+                              .ChangeLocale("ar");
+                          isSelected[index] = false;
+                        }
+                      }
+                    });
+                  }),
             ),
           ],
           backgroundColor: Colors.transparent,
           flexibleSpace: Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [Colors.green.shade500, Colors.green.shade900]),
+              gradient: LinearGradient(
+                  colors: [Colors.green.shade500, Colors.green.shade900]),
             ),
           ),
-          title: Text(S.of(context).title,
+          title: Text(
+            S.of(context).title,
             style: const TextStyle(
               fontSize: 20,
-
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -99,18 +106,17 @@ class _ControllerState extends State<Controller> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                  decoration: const BoxDecoration(
-                    color: Color(0xff003000),
-                  ),
-                  padding: EdgeInsets.zero,
-                  child: Stack(
-
-                    children: [
-                      _buildParallaxBackground(context),
-                      _buildGradient(),
-                      _buildTitleAndSubtitle(),
-                    ],
-                  ),
+                decoration: const BoxDecoration(
+                  color: Color(0xff003000),
+                ),
+                padding: EdgeInsets.zero,
+                child: Stack(
+                  children: [
+                    _buildParallaxBackground(context),
+                    _buildGradient(),
+                    _buildTitleAndSubtitle(),
+                  ],
+                ),
               ),
               ListTile(
                   textColor: Colors.black,
@@ -118,9 +124,15 @@ class _ControllerState extends State<Controller> {
                   title: Row(
                     // mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget> [
-                      const Icon(Icons.home),
-                      Text(S.of(context).homePage,
+                    children: <Widget>[
+                      Padding(
+                        padding: (isSelected[1]
+                            ? const EdgeInsets.fromLTRB(0, 0, 8, 0)
+                            : const EdgeInsets.fromLTRB(8, 0, 0, 0)),
+                        child: const Icon(Icons.home),
+                      ),
+                      Text(
+                        S.of(context).homePage,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -137,9 +149,15 @@ class _ControllerState extends State<Controller> {
                   title: Row(
                     // mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget> [
-                      const Icon(Icons.location_city),
-                      Text(S.of(context).irbidHis,
+                    children: <Widget>[
+                      Padding(
+                        padding: (isSelected[1]
+                            ? const EdgeInsets.fromLTRB(0, 0, 8, 0)
+                            : const EdgeInsets.fromLTRB(8, 0, 0, 0)),
+                        child: const Icon(Icons.location_city),
+                      ),
+                      Text(
+                        S.of(context).irbidHis,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -156,9 +174,15 @@ class _ControllerState extends State<Controller> {
                   title: Row(
                     // mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget> [
-                      const Icon(Icons.groups),
-                      Text(S.of(context).irbidCul,
+                    children: <Widget>[
+                      Padding(
+                        padding: (isSelected[1]
+                            ? const EdgeInsets.fromLTRB(0, 0, 8, 0)
+                            : const EdgeInsets.fromLTRB(8, 0, 0, 0)),
+                        child: const Icon(Icons.groups),
+                      ),
+                      Text(
+                        S.of(context).irbidCul,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -175,9 +199,15 @@ class _ControllerState extends State<Controller> {
                 title: Row(
                   // mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget> [
-                    const Icon(Icons.data_exploration),
-                    Text(S.of(context).irbidEco,
+                  children: <Widget>[
+                    Padding(
+                      padding: (isSelected[1]
+                          ? const EdgeInsets.fromLTRB(0, 0, 8, 0)
+                          : const EdgeInsets.fromLTRB(8, 0, 0, 0)),
+                      child: const Icon(Icons.data_exploration),
+                    ),
+                    Text(
+                      S.of(context).irbidEco,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -195,9 +225,15 @@ class _ControllerState extends State<Controller> {
                 title: Row(
                   // mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget> [
-                    const Icon(Icons.menu_book),
-                    Text(S.of(context).irbidEdu,
+                  children: <Widget>[
+                    Padding(
+                      padding: (isSelected[1]
+                          ? const EdgeInsets.fromLTRB(0, 0, 8, 0)
+                          : const EdgeInsets.fromLTRB(8, 0, 0, 0)),
+                      child: const Icon(Icons.menu_book),
+                    ),
+                    Text(
+                      S.of(context).irbidEdu,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -215,9 +251,15 @@ class _ControllerState extends State<Controller> {
                 title: Row(
                   // mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget> [
-                    const Icon(Icons.connecting_airports_rounded),
-                    Text(S.of(context).irbidTou,
+                  children: <Widget>[
+                    Padding(
+                      padding: (isSelected[1]
+                          ? const EdgeInsets.fromLTRB(0, 0, 8, 0)
+                          : const EdgeInsets.fromLTRB(8, 0, 0, 0)),
+                      child: const Icon(Icons.connecting_airports_rounded),
+                    ),
+                    Text(
+                      S.of(context).irbidTou,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -235,9 +277,15 @@ class _ControllerState extends State<Controller> {
                 title: Row(
                   // mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget> [
-                    const Icon(Icons.health_and_safety_outlined),
-                    Text(S.of(context).irbidHeal,
+                  children: <Widget>[
+                    Padding(
+                      padding: (isSelected[1]
+                          ? const EdgeInsets.fromLTRB(0, 0, 8, 0)
+                          : const EdgeInsets.fromLTRB(8, 0, 0, 0)),
+                      child: const Icon(Icons.health_and_safety_outlined),
+                    ),
+                    Text(
+                      S.of(context).irbidHeal,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -274,7 +322,7 @@ class _ControllerState extends State<Controller> {
           ),
         ),
         body: Container(
-          padding: EdgeInsets.all(0),
+          padding: const EdgeInsets.all(0),
           child: pages[index],
         ),
       );
@@ -303,24 +351,29 @@ class _ControllerState extends State<Controller> {
 
   Widget _buildTitleAndSubtitle() {
     return Positioned(
-
       // right: 20,
-      bottom: 10,
+      bottom: 5,
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.start,
         // crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget> [
-          Text(S.of(context).title, //Irbid
+        children: <Widget>[
+          Text(
+            S.of(context).title, //Irbid
             style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
+
               fontWeight: FontWeight.bold,
             ),
           ),
-          Text(S.of(context).dance, //Arous Al-shamal
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 14,
+          Padding(
+            padding: (isSelected[1]?EdgeInsets.fromLTRB(8, 0, 0, 0): EdgeInsets.fromLTRB(0, 0, 8, 0)),
+            child: Text(
+              S.of(context).dance, //Arous Al-shamal
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+              ),
             ),
           ),
         ],
@@ -328,4 +381,3 @@ class _ControllerState extends State<Controller> {
     );
   }
 }
-
