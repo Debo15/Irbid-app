@@ -7,7 +7,7 @@ class ImageFullScreenWrapperWidget extends StatelessWidget {
 
   ImageFullScreenWrapperWidget({
     required this.child,
-    this.dark = true,
+    this.dark = false,
   });
 
   @override
