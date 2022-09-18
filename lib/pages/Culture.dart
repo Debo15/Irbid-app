@@ -1,22 +1,16 @@
-// Copyright 2019 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
-
 import '../ImageContainer.dart';
 import '../generated/l10n.dart';
+
 
 class CulturePage extends StatelessWidget {
   const CulturePage({Key? key}) : super(key: key);
   final double widthImage = 150;
   final List<String> IMGs = const <String>[
-    'https://www.saaih.com/files/styles/gallery/public/gallery/%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86/%D8%A5%D8%B1%D8%A8%D8%AF/Umm-Qais-Jordan-3.jpg',
-    'https://www.saaih.com/files/styles/gallery/public/gallery/%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86/%D8%A5%D8%B1%D8%A8%D8%AF/Umm-Qais-Jordan-2.jpg',
-    'https://www.saaih.com/files/styles/gallery/public/gallery/%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86/%D8%A5%D8%B1%D8%A8%D8%AF/Umm-Qais-Jordan-1.jpg',
-    'https://www.sa2eh.com/site-images/sites/default/files/sa2eh-prod/article/c/f/0/aaa3bb577144875e53960279a10e292a27036a6f-241119132255.jpg?preset=v3.0_DYNxDYN&rnd=12344&save-png=1',
-    'https://www.sa2eh.com/site-images/sites/default/files/sa2eh-prod/article/c/f/0/27a2679904a34a01143a992de0a3f1995536b2cf-241119132256.jpg?preset=v3.0_DYNxDYN&rnd=12344&save-png=1',
-    'https://www.sa2eh.com/site-images/sites/default/files/sa2eh-prod/article/c/f/0/2d7209ccfc1ba90e7f4520f1472c47cb64c72d44-241119132256.jpg?preset=v3.0_DYNxDYN&rnd=12344&save-png=1',
+    'assets/a man.jfif',
+    'assets/Arrar.jfif',
+    'assets/dehia.jfif',
+    'assets/mansaf.jfif'
   ];
 
   Widget _createImagesBar() {
@@ -70,7 +64,7 @@ class CulturePage extends StatelessWidget {
 
   Widget createImage(String src) {
     return ImageFullScreenWrapperWidget(
-        child: Image.network(
+        child: Image.asset(
       src,
       width: widthImage,
     ));
@@ -81,6 +75,9 @@ class CulturePage extends StatelessWidget {
       opacity: 1.0,
       duration: const Duration(seconds: 2),
       child: Image.network(
+        ////
+        // iyad if you put an image slider then no need for an intro photo just the slider
+        ////
         "https://www.saaih.com/files/styles/gallery/public/gallery/%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86/%D8%A5%D8%B1%D8%A8%D8%AF/Umm-Qais-Jordan-1.jpg",
         fit: BoxFit.cover,
       ),
