@@ -1,18 +1,20 @@
+// Copyright 2019 The Flutter team. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'package:flutter/material.dart';
 import 'package:irbid/ImageContainer.dart';
-import 'package:irbid/generated/l10n.dart';
-
 
 class HistoryPage extends StatelessWidget {
   const HistoryPage({Key? key}) : super(key: key);
   final double widthImage = 150;
   final List<String> IMGs = const <String>[
-    'https://www.saaih.com/files/styles/gallery/public/gallery/%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86/%D8%A5%D8%B1%D8%A8%D8%AF/Umm-Qais-Jordan-3.jpg',
-    'https://www.saaih.com/files/styles/gallery/public/gallery/%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86/%D8%A5%D8%B1%D8%A8%D8%AF/Umm-Qais-Jordan-2.jpg',
-    'https://www.saaih.com/files/styles/gallery/public/gallery/%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86/%D8%A5%D8%B1%D8%A8%D8%AF/Umm-Qais-Jordan-1.jpg',
-    'https://www.sa2eh.com/site-images/sites/default/files/sa2eh-prod/article/c/f/0/aaa3bb577144875e53960279a10e292a27036a6f-241119132255.jpg?preset=v3.0_DYNxDYN&rnd=12344&save-png=1',
-    'https://www.sa2eh.com/site-images/sites/default/files/sa2eh-prod/article/c/f/0/27a2679904a34a01143a992de0a3f1995536b2cf-241119132256.jpg?preset=v3.0_DYNxDYN&rnd=12344&save-png=1',
-    'https://www.sa2eh.com/site-images/sites/default/files/sa2eh-prod/article/c/f/0/2d7209ccfc1ba90e7f4520f1472c47cb64c72d44-241119132256.jpg?preset=v3.0_DYNxDYN&rnd=12344&save-png=1',
+    'assets/Umm-Qais.jpg',
+    'assets/Umm-Qais2.jpg',
+    'assets/Umm-Qais3.jpg',
+    'assets/Umm-Qais4.jpg',
+    'assets/Umm-Qais5.jpg',
+    'assets/Umm-Qais6.jpg'
   ];
 
   Widget _createImagesBar() {
@@ -35,14 +37,7 @@ class HistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:
-        Column(
-            children: <Widget>[
-        Row(
-          children: <Widget>[
-            createImage("assets/irbid_0.jpg"),
-          return SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -73,18 +68,18 @@ class HistoryPage extends StatelessWidget {
 
   Widget createImage(String src) {
     return ImageFullScreenWrapperWidget(
-        child: Image.network(
-      src,
-      width: widthImage,
-    ));
+        child: Image.asset(
+          src,
+          width: widthImage,
+        ));
   }
 
   Widget _buildParallaxBackground(BuildContext context) {
     return AnimatedOpacity(
       opacity: 1.0,
       duration: Duration(seconds: 2),
-      child: Image.network(
-        "https://www.saaih.com/files/styles/gallery/public/gallery/%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86/%D8%A5%D8%B1%D8%A8%D8%AF/Umm-Qais-Jordan-1.jpg",
+      child: Image.asset(
+        "assets/centerCity.jpg",
         fit: BoxFit.cover,
       ),
     );

@@ -33,6 +33,8 @@ class _ControllerState extends State<Controller> {
     SettingPage(),
   ];
 
+  final List<bool> isSelected = [true, false];
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -42,30 +44,64 @@ class _ControllerState extends State<Controller> {
             ),
           ),
           actions: <Widget> [
-            ElevatedButton(
-              onPressed: () {
-                context.read<LanguageChangeProvider>().ChangeLocale("ar");
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.transparent,
-                // shape: RoundedRectangleBorder(
-                //   borderRadius: BorderRadius.circular(50),
-                // ),
-              ),
-              child: const Text("ar"),
+            ToggleButtons(
+              isSelected: isSelected,
+              selectedColor: Colors.green[900],
+              color: Colors.white,
+              fillColor: Colors.green.shade300,
+              textStyle: const TextStyle(fontWeight: FontWeight.bold),
+              renderBorder: true,
+
+              borderColor: Colors.white,
+              borderWidth: 1.5,
+              borderRadius: BorderRadius.circular(10),
+              children: const [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: Text('ar', style: TextStyle(fontSize: 18)),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: Text('en', style: TextStyle(fontSize: 18)),
+                ),
+              ],
+              onPressed: (int newIndex) {
+                setState(() {
+                  for (int index = 0; index < isSelected.length; index++) {
+                    if (index == newIndex) {
+                      context.read<LanguageChangeProvider>().ChangeLocale("en");
+                      isSelected[index] = true;
+                    }
+                    else {
+                      context.read<LanguageChangeProvider>().ChangeLocale("ar");
+                      isSelected[index] = false;
+                    }
+                  }
+                });
+              }
             ),
-            ElevatedButton(
-              onPressed: () {
-                context.read<LanguageChangeProvider>().ChangeLocale("en");
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.transparent,
-                // shape: RoundedRectangleBorder(
-                //   borderRadius: BorderRadius.circular(50),
-                // ),
-              ),
-              child: const Text("en"),
-            ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     context.read<LanguageChangeProvider>().ChangeLocale("ar");
+            //
+            //   },
+            //   style: ElevatedButton.styleFrom(
+            //     backgroundColor: Colors.transparent,
+            //   ),
+            //   child: const Text("ar"),
+            // ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     context.read<LanguageChangeProvider>().ChangeLocale("en");
+            //   },
+            //   style: ElevatedButton.styleFrom(
+            //     backgroundColor: Colors.transparent,
+            //     // shape: RoundedRectangleBorder(
+            //     //   borderRadius: BorderRadius.circular(50),
+            //     // ),
+            //   ),
+            //   child: const Text("en"),
+            // ),
           ],
           backgroundColor: Colors.transparent,
           flexibleSpace: Container(
@@ -87,7 +123,7 @@ class _ControllerState extends State<Controller> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0xff003000),
                   ),
                   padding: EdgeInsets.zero,
@@ -237,27 +273,27 @@ class _ControllerState extends State<Controller> {
                   Navigator.pop(context);
                 },
               ),
-              ListTile(
-                textColor: Colors.black,
-                iconColor: Colors.green,
-                title: Row(
-                  // mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "أعدادت التطبيق",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Icon(Icons.settings),
-                  ],
-                ),
-                onTap: () {
-                  setState(() => this.index = 7);
-                  Navigator.pop(context);
-                },
-              ),
+              // ListTile(
+              //   textColor: Colors.black,
+              //   iconColor: Colors.green,
+              //   title: Row(
+              //     // mainAxisAlignment: MainAxisAlignment.end,
+              //     crossAxisAlignment: CrossAxisAlignment.center,
+              //     children: const [
+              //       Text(
+              //         "أعدادت التطبيق",
+              //         style: TextStyle(
+              //           fontWeight: FontWeight.bold,
+              //         ),
+              //       ),
+              //       Icon(Icons.settings),
+              //     ],
+              //   ),
+              //   onTap: () {
+              //     setState(() => this.index = 7);
+              //     Navigator.pop(context);
+              //   },
+              // ),
             ],
           ),
         ),

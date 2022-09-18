@@ -140,10 +140,10 @@ class S {
     );
   }
 
-  /// `  About Irbid city`
+  /// ` About Irbid city`
   String get aboutIrbidCity {
     return Intl.message(
-      '  About Irbid city',
+      ' About Irbid city',
       name: 'aboutIrbidCity',
       desc: '',
       args: [],
