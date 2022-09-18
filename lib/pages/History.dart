@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:irbid/ImageContainer.dart';
 import 'package:irbid/generated/l10n.dart';
@@ -13,24 +14,6 @@ class HistoryPage extends StatelessWidget {
     'assets/Umm-Qais5.jpg',
     'assets/Umm-Qais6.jpg'
   ];
-
-  Widget _createImagesBar() {
-    return ListView.builder(
-      primary: false,
-      shrinkWrap: true,
-      padding: const EdgeInsets.all(8),
-      itemCount: IMGs.length,
-      scrollDirection: Axis.horizontal,
-      itemBuilder: (BuildContext context, int index) {
-        return Row(children: [
-          createImage(IMGs[index]),
-          const SizedBox(
-            width: 7,
-          )
-        ]);
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +36,6 @@ class HistoryPage extends StatelessWidget {
               style: const TextStyle(fontSize: 16),
             ),
           ),
-          const Divider(
-            color: Colors.white,
-          ),
-          const Divider(
-            height: 4,
-            color: Colors.black,
-          ),
-          SizedBox(height: 150.0, child: _createImagesBar()),
         ],
       ),
     );
@@ -75,12 +50,17 @@ class HistoryPage extends StatelessWidget {
   }
 
   Widget _buildParallaxBackground(BuildContext context) {
-    return AnimatedOpacity(
-      opacity: 1.0,
-      duration: const Duration(seconds: 2),
-      child: Image.asset(
-        "assets/centerCity.jpg",
-        fit: BoxFit.cover,
+    return CarouselSlider.builder(
+      itemCount: IMGs.length,
+      itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
+          Container(
+              width: MediaQuery.of(context).size.width,
+              child: Image.asset(IMGs[itemIndex], fit: BoxFit.cover)),
+      options: CarouselOptions(
+        autoPlay: true,
+        aspectRatio: 16 / 9,
+        enlargeCenterPage: true,
+        viewportFraction: 1.0,
       ),
     );
   }
@@ -104,21 +84,14 @@ class HistoryPage extends StatelessWidget {
     return Positioned(
       // right: 20,
       bottom: 10,
-      child: Text(S.of(context).irbidGovernorateHistory,
+      child: Text(
+        S.of(context).irbidGovernorateHistory,
         style: const TextStyle(
           color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
         ),
       ),
-      // child: Text(
-      //   "تاريخ مدينة إربد",
-      //   style: TextStyle(
-      //     color: Colors.white,
-      //     fontSize: 24,
-      //     fontWeight: FontWeight.bold,
-      //   ),
-      // ),
     );
   }
 }
