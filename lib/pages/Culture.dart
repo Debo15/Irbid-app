@@ -14,24 +14,6 @@ class CulturePage extends StatelessWidget {
     'assets/mansaf.jfif'
   ];
 
-  Widget _createImagesBar() {
-    return ListView.builder(
-      primary: false,
-      shrinkWrap: true,
-      padding: const EdgeInsets.all(8),
-      itemCount: IMGs.length,
-      scrollDirection: Axis.horizontal,
-      itemBuilder: (BuildContext context, int index) {
-        return Row(children: [
-          createImage(IMGs[index]),
-          const SizedBox(
-            width: 7,
-          )
-        ]);
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -53,14 +35,6 @@ class CulturePage extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Widget createImage(String src) {
-    return ImageFullScreenWrapperWidget(
-        child: Image.asset(
-      src,
-      width: widthImage,
-    ));
   }
 
   Widget _buildParallaxBackground(BuildContext context) {
@@ -101,7 +75,7 @@ class CulturePage extends StatelessWidget {
       bottom: 10,
       child: Text(
         S.of(context).irbidCul,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 24,
           fontWeight: FontWeight.bold,

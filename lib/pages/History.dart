@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:irbid/ImageContainer.dart';
 import 'package:irbid/generated/l10n.dart';
 
 class HistoryPage extends StatelessWidget {
@@ -39,14 +38,6 @@ class HistoryPage extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Widget createImage(String src) {
-    return ImageFullScreenWrapperWidget(
-        child: Image.asset(
-      src,
-      width: widthImage,
-    ));
   }
 
   Widget _buildParallaxBackground(BuildContext context) {
