@@ -1,2 +1,3 @@
 # Irbid-app
 an App for Irbid city where it shows and describes tourism places, etc ... 
+> the code doesn't seem to be clean because of a short deadline xD
