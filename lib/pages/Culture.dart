@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import '../ImageContainer.dart';
 import '../generated/l10n.dart';
@@ -49,14 +50,6 @@ class CulturePage extends StatelessWidget {
           Text(
             S.of(context).irbidCul,
           ),
-          const Divider(
-            color: Colors.white,
-          ),
-          const Divider(
-            height: 4,
-            color: Colors.black,
-          ),
-          SizedBox(height: 150.0, child: _createImagesBar()),
         ],
       ),
     );
@@ -71,18 +64,21 @@ class CulturePage extends StatelessWidget {
   }
 
   Widget _buildParallaxBackground(BuildContext context) {
-    return AnimatedOpacity(
-      opacity: 1.0,
-      duration: const Duration(seconds: 2),
-      child: Image.network(
-        ////
-        // iyad if you put an image slider then no need for an intro photo just the slider
-        ////
-        "https://www.saaih.com/files/styles/gallery/public/gallery/%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86/%D8%A5%D8%B1%D8%A8%D8%AF/Umm-Qais-Jordan-1.jpg",
-        fit: BoxFit.cover,
+    return CarouselSlider.builder(
+      itemCount: IMGs.length,
+      itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
+          Container(
+              width: MediaQuery.of(context).size.width,
+              child: Image.asset(IMGs[itemIndex], fit: BoxFit.cover)),
+      options: CarouselOptions(
+        autoPlay: true,
+        aspectRatio: 16 / 9,
+        enlargeCenterPage: true,
+        viewportFraction: 1.0,
       ),
     );
   }
+
 
   Widget _buildGradient() {
     return Positioned.fill(
