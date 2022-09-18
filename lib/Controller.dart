@@ -262,7 +262,7 @@ class _ControllerState extends State<Controller> {
           ),
         ),
         body: Container(
-          padding: EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(0),
           child: pages[index],
         ),
       );
