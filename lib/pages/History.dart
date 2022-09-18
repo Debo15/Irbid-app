@@ -1,9 +1,6 @@
-// Copyright 2019 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
 import 'package:irbid/ImageContainer.dart';
+import 'package:irbid/generated/l10n.dart';
 
 class HistoryPage extends StatelessWidget {
   const HistoryPage({Key? key}) : super(key: key);
@@ -46,13 +43,16 @@ class HistoryPage extends StatelessWidget {
             children: [
               _buildParallaxBackground(context),
               _buildGradient(),
-              _buildTitleAndSubtitle(),
+              _buildTitleAndSubtitle(context),
             ],
           ),
-          const Divider(),
-          const Text(
-              style: TextStyle(fontSize: 16),
-              "تُمثل إربد في ثنايها موروثاً حضارياً تعاقبت عليها الإمبراطوريات والأُمم السابقة، والتي خلّفت ورائها آثارها ومُقتنياتها وكنوزها التي ما زالت شامِخةً على أراضيها. ويوجد فيها مقامات الصحابةِ رضوان الله عليهم، والتي فتحت مجالاً للسياحة الدينية في زيارةٍ الى أضرحة هؤلاء الصحابة. منهم مقام سيدنا معاذ بن جبل في الشونة الشمالية، فهو من ابرز مقامات صحابة رسول الله في المنطقة لمكانة صاحبه عند رسول الله والذي وصفه صلى الله عليه وسلم بأعلم أُمته في الحلال والحرام وأوفده قاضياً لليمن لتعليمهم احكام الشريعة والقران الكريم، ثم توفي في طاعون. ويضم المقام مسجدا للرجال واخر للنساء ومكتبة والمركز الثقافي الاسلامي للرجال وحديقة ومواقف سيارات ومدرسة نموذجية للقران الكريم استحدثتها وزارة الاوقاف والمرافق الاخرى لزيادة الخدمات الدينية. وهناك الصحابي شرحبيل بن حسنة ومقامه في وادي الريان، وقد تمييز الصحابي بالشجاعة والتضحية والكرم والذكاء وحسن الادارة ما دفع بالخليفة عمر بن الخطاب رضي الله عنه الى توليته على ربع الشام، وشارك صاحب المقام رضي الله مع الرسول العظيم صلى الله عليه وسلم الهجرتين وفي معارك الشام. ثم توفي في طاعون عمواس في السنة الثامنة للهجرة. مقامُه يضم مصلى للرجال ومكتبة وحديقة ومواقف للسيارات وقبة ومأذنة. وهناك موقع معركة اليرموك بالقرب من نهر اليرموك والتي كانت سنة (15 هـ - 636م) بين المسلمين والإمبراطورية البيزنطية، يعتبرها بعض المؤرخين من أهم المعارك في تاريخ العالم لأنها كانت بداية أول موجة انتصارات للمسلمين خارج جزيرة العرب، وأدت لتقدم الإسلام السريع في بلاد الشام. المعركة حدثت بعد وفاة الرسول صلى الله عليه وسلم عام 632م بأربع سنوات. "),
+          Container(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              S.of(context).historyIrbid,
+              style: const TextStyle(fontSize: 16),
+            ),
+          ),
           const Divider(
             color: Colors.white,
           ),
@@ -69,15 +69,15 @@ class HistoryPage extends StatelessWidget {
   Widget createImage(String src) {
     return ImageFullScreenWrapperWidget(
         child: Image.asset(
-          src,
-          width: widthImage,
-        ));
+      src,
+      width: widthImage,
+    ));
   }
 
   Widget _buildParallaxBackground(BuildContext context) {
     return AnimatedOpacity(
       opacity: 1.0,
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
       child: Image.asset(
         "assets/centerCity.jpg",
         fit: BoxFit.cover,
@@ -100,18 +100,25 @@ class HistoryPage extends StatelessWidget {
     );
   }
 
-  Widget _buildTitleAndSubtitle() {
-    return const Positioned(
-      right: 20,
+  Widget _buildTitleAndSubtitle(BuildContext context) {
+    return Positioned(
+      // right: 20,
       bottom: 10,
-      child: Text(
-        "تاريخ مدينة إربد",
-        style: TextStyle(
+      child: Text(S.of(context).irbidGovernorateHistory,
+        style: const TextStyle(
           color: Colors.white,
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
         ),
       ),
+      // child: Text(
+      //   "تاريخ مدينة إربد",
+      //   style: TextStyle(
+      //     color: Colors.white,
+      //     fontSize: 24,
+      //     fontWeight: FontWeight.bold,
+      //   ),
+      // ),
     );
   }
 }

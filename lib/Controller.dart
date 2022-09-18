@@ -45,15 +45,13 @@ class _ControllerState extends State<Controller> {
           ),
           actions: <Widget> [
             ToggleButtons(
+            constraints: const BoxConstraints(maxHeight: 90.0, minHeight: 35.1),
               isSelected: isSelected,
               selectedColor: Colors.green[900],
               color: Colors.white,
               fillColor: Colors.green.shade300,
               textStyle: const TextStyle(fontWeight: FontWeight.bold),
               renderBorder: true,
-
-              borderColor: Colors.white,
-              borderWidth: 1.5,
               borderRadius: BorderRadius.circular(10),
               children: const [
                 Padding(
@@ -80,28 +78,6 @@ class _ControllerState extends State<Controller> {
                 });
               }
             ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     context.read<LanguageChangeProvider>().ChangeLocale("ar");
-            //
-            //   },
-            //   style: ElevatedButton.styleFrom(
-            //     backgroundColor: Colors.transparent,
-            //   ),
-            //   child: const Text("ar"),
-            // ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     context.read<LanguageChangeProvider>().ChangeLocale("en");
-            //   },
-            //   style: ElevatedButton.styleFrom(
-            //     backgroundColor: Colors.transparent,
-            //     // shape: RoundedRectangleBorder(
-            //     //   borderRadius: BorderRadius.circular(50),
-            //     // ),
-            //   ),
-            //   child: const Text("en"),
-            // ),
           ],
           backgroundColor: Colors.transparent,
           flexibleSpace: Container(
