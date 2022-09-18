@@ -33,7 +33,7 @@ class _ControllerState extends State<Controller> {
     SettingPage(),
   ];
 
-  final List<bool> isSelected = [true, false];
+  final List<bool> isSelected = [false, true];
 
   @override
   Widget build(BuildContext context) => Scaffold(
