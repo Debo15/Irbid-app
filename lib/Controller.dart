@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:irbid/languageChangeProvider.dart';
 import 'package:irbid/pages/Culture.dart';
 import 'package:irbid/pages/Economic.dart';
 import 'package:irbid/pages/Education.dart';
@@ -9,8 +8,9 @@ import 'package:irbid/pages/HomePage.dart';
 import 'package:irbid/pages/Settings.dart';
 import 'package:irbid/pages/Tourism.dart';
 import 'package:provider/provider.dart';
-
 import 'generated/l10n.dart';
+import 'package:irbid/languageChangeProvider.dart';
+
 
 class Controller extends StatefulWidget {
   const Controller({super.key});
@@ -41,14 +41,31 @@ class _ControllerState extends State<Controller> {
               bottom: Radius.circular(48.0),
             ),
           ),
-          actions: <Widget>[
-            ElevatedButton(onPressed: (){
-              context.read<LanguageChangeProvider>().ChangeLocale("ar");
-            }, child: Text("Arabic")),
-            ElevatedButton(onPressed: (){
-              context.read<LanguageChangeProvider>().ChangeLocale("en");
-            }, child: Text("English")),
-
+          actions: <Widget> [
+            ElevatedButton(
+              onPressed: () {
+                context.read<LanguageChangeProvider>().ChangeLocale("ar");
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.transparent,
+                // shape: RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.circular(50),
+                // ),
+              ),
+              child: const Text("ar"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                context.read<LanguageChangeProvider>().ChangeLocale("en");
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.transparent,
+                // shape: RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.circular(50),
+                // ),
+              ),
+              child: const Text("en"),
+            ),
           ],
           backgroundColor: Colors.transparent,
           flexibleSpace: Container(
