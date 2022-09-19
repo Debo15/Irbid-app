@@ -73,7 +73,6 @@ class HistoryPage extends StatelessWidget {
 
   Widget _buildTitleAndSubtitle(BuildContext context) {
     return Positioned(
-      // right: 20,
       bottom: 10,
       child: Text(
         S.of(context).irbidGovernorateHistory,

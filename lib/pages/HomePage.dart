@@ -37,7 +37,8 @@ class _HomePage extends State<MyStatefulWidget> with TickerProviderStateMixin {
             ),
             Container(
               padding: const EdgeInsets.all(10.0),
-              child: Text(S.of(context).introIrbid
+              child: Text(S.of(context).introIrbid,
+                style: const TextStyle(fontSize: 16),
               ),
             //   child: const Directionality(
             //     textDirection: TextDirection.rtl,

@@ -29,8 +29,12 @@ class CulturePage extends StatelessWidget {
             ],
           ),
           const Divider(),
-          Text(
-            S.of(context).irbidCul,
+          Container(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              S.of(context).cultureIrbid,
+              style: const TextStyle(fontSize: 16),
+            ),
           ),
         ],
       ),
@@ -74,7 +78,7 @@ class CulturePage extends StatelessWidget {
 
       bottom: 10,
       child: Text(
-        S.of(context).irbidCul,
+        S.of(context).irbidGovernorateCulture,
         style: const TextStyle(
           color: Colors.white,
           fontSize: 24,

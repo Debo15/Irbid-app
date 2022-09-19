@@ -7,10 +7,10 @@ class EconomicPage extends StatelessWidget {
   const EconomicPage({Key? key}) : super(key: key);
   final double widthImage = 150;
   final List<String> IMGs = const <String>[
-    'assets/a man.jfif',
-    'assets/Arrar.jfif',
-    'assets/dehia.jfif',
-    'assets/mansaf.jfif'
+    'assets/applePicking.jpg',
+    'assets/WheatO.jpg',
+    'assets/Working.jpg',
+    'assets/Qarma.jpg'
   ];
 
   @override
@@ -28,8 +28,12 @@ class EconomicPage extends StatelessWidget {
             ],
           ),
           const Divider(),
-          Text(
-            S.of(context).irbidEco,
+          Container(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              S.of(context).economyIrbid,
+              style: const TextStyle(fontSize: 16),
+            ),
           ),
         ],
       ),
@@ -73,7 +77,7 @@ class EconomicPage extends StatelessWidget {
 
       bottom: 10,
       child: Text(
-        S.of(context).irbidEco,
+        S.of(context).irbidGovernorateEco,
         style: const TextStyle(
           color: Colors.white,
           fontSize: 24,
