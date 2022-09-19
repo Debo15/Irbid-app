@@ -101,7 +101,7 @@ class _ControllerState extends State<Controller> {
           ),
           centerTitle: true,
         ),
-        drawer: Drawer(
+        drawer: ModalRoute.of(context)?.settings.name == "Tourism" ? null : Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
