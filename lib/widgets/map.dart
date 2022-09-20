@@ -142,7 +142,6 @@ class MapState extends State<Map> {
       currentLocale =
           context.read<LanguageChangeProvider>().currentLocale.languageCode;
     });
-    print(currentLocale);
   }
 
   @override

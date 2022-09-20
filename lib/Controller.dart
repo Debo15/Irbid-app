@@ -19,7 +19,7 @@ class Controller extends StatefulWidget {
 }
 
 class _ControllerState extends State<Controller> {
-  GlobalKey<MapState> globalKey = GlobalKey();
+  GlobalKey<TourismPageState> globalKey = GlobalKey();
   int index = 0;
 
   List<Widget> pages = [];
@@ -54,7 +54,7 @@ class _ControllerState extends State<Controller> {
             "en"
       ];
     });
-    print(globalKey.currentState);
+    globalKey.currentState?.updateLocale();
     super.didChangeDependencies();
   }
 
