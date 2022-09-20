@@ -60,10 +60,10 @@ class S {
     );
   }
 
-  /// ` The north's bride`
+  /// ` The north's pride`
   String get dance {
     return Intl.message(
-      ' The north\'s bride',
+      ' The north\'s pride',
       name: 'dance',
       desc: '',
       args: [],
@@ -205,6 +205,56 @@ class S {
     return Intl.message(
       'The origins of Irbid Governorate go back to the Bronze Age of 3000 BC. It was contemporary with the various Aramaic, Ammonites and Greco-Roman civilizations, thus being one of the ancient settlements in the south of the Levant. Where these civilizations left various tourist and archaeological areas.',
       name: 'tourismIrbid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Irbid governorate has been distinguished by the provision of comprehensive health care for its citizens of different races, whether they are Jordanians or refugees.\nIt contained many hospitals that were distributed throughout its entirety, whether in its city or in its villages, to be served at the health level.\nThere are 10 main hospitals that provide all areas of medical specialization, health and treatment services, with 10 other health centers available to serve their neighborhoods.\nAmong the tasks of these centers and hospitals are providing preventive and curative health services to the population in Irbid Governorate, improving the quality and safety of health care services and ensuring their continuity, strengthening reproductive health services, family planning and child health, preventive efforts to combat non-communicable diseases and monitoring the spread of them, and issuing health insurance cards to those who are eligible in all its categories.`
+  String get healthIrbid {
+    return Intl.message(
+      'Irbid governorate has been distinguished by the provision of comprehensive health care for its citizens of different races, whether they are Jordanians or refugees.\nIt contained many hospitals that were distributed throughout its entirety, whether in its city or in its villages, to be served at the health level.\nThere are 10 main hospitals that provide all areas of medical specialization, health and treatment services, with 10 other health centers available to serve their neighborhoods.\nAmong the tasks of these centers and hospitals are providing preventive and curative health services to the population in Irbid Governorate, improving the quality and safety of health care services and ensuring their continuity, strengthening reproductive health services, family planning and child health, preventive efforts to combat non-communicable diseases and monitoring the spread of them, and issuing health insurance cards to those who are eligible in all its categories.',
+      name: 'healthIrbid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The shrine of Muath bin Jabal in the northern Shouna, one of the most prominent shrines of the Companions.\nThe shrine includes a mosque for men and another for women, a library, an Islamic cultural center for men, car parking, and some other facilities to increase the services.`
+  String get muathShrine {
+    return Intl.message(
+      'The shrine of Muath bin Jabal in the northern Shouna, one of the most prominent shrines of the Companions.\nThe shrine includes a mosque for men and another for women, a library, an Islamic cultural center for men, car parking, and some other facilities to increase the services.',
+      name: 'muathShrine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shrine of Sharhabil bin Hasna in Wadi Al Rayan.\nThe shrine includes a prayer room for men, a library, a garden, parking lots, a dome and a minaret.`
+  String get sharhabeelShrine {
+    return Intl.message(
+      'Shrine of Sharhabil bin Hasna in Wadi Al Rayan.\nThe shrine includes a prayer room for men, a library, a garden, parking lots, a dome and a minaret.',
+      name: 'sharhabeelShrine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dar Al Saraya Museum in the heart of Irbid.\nIt contains a group of Roman, Greek and Islamic monuments that succeeded Irbid Governorate.\nIt can be accessed from various areas because it is in the city center.`
+  String get darSaraya {
+    return Intl.message(
+      'Dar Al Saraya Museum in the heart of Irbid.\nIt contains a group of Roman, Greek and Islamic monuments that succeeded Irbid Governorate.\nIt can be accessed from various areas because it is in the city center.',
+      name: 'darSaraya',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Beit Arar is one of the most prominent cultural places in Irbid.\nIt was established to host cultural and knowledge events in the city, and it still maintains its traditional character and design.\nIt is easily accessible like the rest of the cultural and tourist areas in Irbid.`
+  String get ArarHouse {
+    return Intl.message(
+      'Beit Arar is one of the most prominent cultural places in Irbid.\nIt was established to host cultural and knowledge events in the city, and it still maintains its traditional character and design.\nIt is easily accessible like the rest of the cultural and tourist areas in Irbid.',
+      name: 'ArarHouse',
       desc: '',
       args: [],
     );
