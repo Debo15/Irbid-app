@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitDown,
     ]);
     Future.delayed(const Duration(
-        seconds: 4), () { // smooth, not talking more than 2 seconds
+        seconds: 2), () { // smooth, not talking more than 2 seconds
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => const Controller()));
     });
@@ -73,9 +73,16 @@ class _MyAppState extends State<MyApp> {
               SizedBox(
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: Image.asset("assets/splash_logo.png")),
-              const SizedBox(
-                    child: CircularProgressIndicator(
-                      color: Colors.white,
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.4,
+                    child: ShaderMask(
+                        shaderCallback: (bounds) {
+                          return  LinearGradient(
+                            colors: [Colors.green, Colors.brown.shade700],
+                          ).createShader(bounds);
+                        },
+                        blendMode: BlendMode.srcATop,
+                        child: Image.asset("assets/loading.gif")
                     ),
                   )
             ],
