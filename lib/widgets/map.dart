@@ -6,16 +6,19 @@ import 'package:irbid/util/map_category.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:irbid/pages/tourism_info.dart';
 
+import '../languageChangeProvider.dart';
+import 'package:provider/provider.dart';
+
 class Map extends StatefulWidget {
   final MapCategory category;
 
   const Map({super.key, required this.category});
 
   @override
-  State<StatefulWidget> createState() => _MapState();
+  State<StatefulWidget> createState() => MapState();
 }
 
-class _MapState extends State<Map> {
+class MapState extends State<Map> {
   late final PanelController _pc = PanelController();
   final Completer<GoogleMapController> _controller = Completer();
 
@@ -42,9 +45,12 @@ class _MapState extends State<Map> {
   );
 
   final List<bool> isSelected = <bool>[false, false, true];
+  String currentLocale = "";
 
   @override
   void initState() {
+    currentLocale =
+        context.read<LanguageChangeProvider>().currentLocale.languageCode;
     Set<Marker> educationMarkers = {
       Marker(
           markerId: const MarkerId("JUST"),
@@ -131,26 +137,32 @@ class _MapState extends State<Map> {
     super.initState();
   }
 
+  void updateLocale() {
+    setState(() {
+      currentLocale =
+          context.read<LanguageChangeProvider>().currentLocale.languageCode;
+    });
+    print(currentLocale);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SlidingUpPanel(
-          controller: _pc,
-          panel: Center(
-            child: Text(currentBodyText),
+    return SlidingUpPanel(
+        controller: _pc,
+        panel: Center(
+          child: Text(currentBodyText),
+        ),
+        collapsed: Center(
+          child: Text(
+            collapsedText,
+            style: const TextStyle(color: Colors.black),
           ),
-          collapsed: Center(
-            child: Text(
-              collapsedText,
-              style: const TextStyle(color: Colors.black),
-            ),
-          ),
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(25.0), topRight: Radius.circular(18.0)),
-          body: widget.category == MapCategory.tourism
-              ? tourismMap()
-              : regularMap()),
-    );
+        ),
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(25.0), topRight: Radius.circular(18.0)),
+        body: widget.category == MapCategory.tourism
+            ? tourismMap()
+            : regularMap());
   }
 
   Widget regularMap() {
@@ -194,20 +206,36 @@ class _MapState extends State<Map> {
     return (Stack(
       children: [
         regularMap(),
-        const Padding(
+        Padding(
           //fill the background of the icon.
-          padding: EdgeInsets.fromLTRB(16, 16, 0, 0),
-          child: CircleAvatar(
+          padding: currentLocale == "en"
+              ? const EdgeInsets.fromLTRB(16, 16, 0, 0)
+              : const EdgeInsets.fromLTRB(0, 16, 0, 0),
+          child: const CircleAvatar(
             backgroundColor: Colors.white,
           ),
         ),
-        IconButton(
-          onPressed: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const TourismInfo()));
-          },
-          color: Colors.blueAccent,
-          icon: const Icon(Icons.info, size: 55),
+        Padding(
+          padding: currentLocale == "ar"
+              ? const EdgeInsets.fromLTRB(0, 0, 16, 0)
+              : EdgeInsets.zero,
+          child: IconButton(
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(
+                      builder: (context) => const TourismInfo()))
+                  .then((value) => {
+                        setState(() {
+                          currentLocale = context
+                              .read<LanguageChangeProvider>()
+                              .currentLocale
+                              .languageCode;
+                        })
+                      });
+            },
+            color: Colors.blueAccent,
+            icon: const Icon(Icons.info, size: 55),
+          ),
         ),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.72,

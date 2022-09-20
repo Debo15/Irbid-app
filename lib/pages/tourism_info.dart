@@ -23,8 +23,17 @@ class _TourismInfoState extends State<TourismInfo> {
     'assets/Umm-Qais5.jpg',
     'assets/Umm-Qais6.jpg'
   ];
+  List<bool> isSelected = [];
+  @override
+  void initState() {
+    setState(() {
+      isSelected = [
+        context.read<LanguageChangeProvider>().currentLocale.languageCode == "ar",
+        context.read<LanguageChangeProvider>().currentLocale.languageCode == "en"];
+    });
+    super.initState();
+  }
 
-  final List<bool> isSelected = [false, true];
 
   @override
   Widget build(BuildContext context) {

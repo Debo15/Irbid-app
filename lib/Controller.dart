@@ -6,6 +6,7 @@ import 'package:irbid/pages/Health.dart';
 import 'package:irbid/pages/History.dart';
 import 'package:irbid/pages/HomePage.dart';
 import 'package:irbid/pages/Tourism.dart';
+import 'package:irbid/widgets/map.dart';
 import 'package:provider/provider.dart';
 import 'generated/l10n.dart';
 import 'package:irbid/languageChangeProvider.dart';
@@ -18,19 +19,44 @@ class Controller extends StatefulWidget {
 }
 
 class _ControllerState extends State<Controller> {
+  GlobalKey<MapState> globalKey = GlobalKey();
   int index = 0;
 
-  final pages = [
-    HomePage(),
-    HistoryPage(),
-    CulturePage(),
-    EconomicPage(),
-    EducationPage(),
-    TourismPage(),
-    HealthPage(),
-  ];
+  List<Widget> pages = [];
 
-  final List<bool> isSelected = [false, true];
+  List<bool> isSelected = [];
+
+  @override
+  void initState() {
+    pages = [
+      const HomePage(),
+      const HistoryPage(),
+      const CulturePage(),
+      const EconomicPage(),
+      const EducationPage(),
+      TourismPage(key: globalKey),
+      const HealthPage(),
+    ];
+    isSelected = [
+      context.read<LanguageChangeProvider>().currentLocale.languageCode == "ar",
+      context.read<LanguageChangeProvider>().currentLocale.languageCode == "en"
+    ];
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    setState(() {
+      isSelected = [
+        context.read<LanguageChangeProvider>().currentLocale.languageCode ==
+            "ar",
+        context.read<LanguageChangeProvider>().currentLocale.languageCode ==
+            "en"
+      ];
+    });
+    print(globalKey.currentState);
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -99,7 +125,7 @@ class _ControllerState extends State<Controller> {
           ),
           centerTitle: true,
         ),
-        drawer: ModalRoute.of(context)?.settings.name == "Tourism" ? null : Drawer(
+        drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -138,7 +164,7 @@ class _ControllerState extends State<Controller> {
                     ],
                   ),
                   onTap: () {
-                    setState(() => this.index = 0);
+                    setState(() => index = 0);
                     Navigator.pop(context);
                   }),
               ListTile(
@@ -163,7 +189,7 @@ class _ControllerState extends State<Controller> {
                     ],
                   ),
                   onTap: () {
-                    setState(() => this.index = 1);
+                    setState(() => index = 1);
                     Navigator.pop(context);
                   }),
               ListTile(
@@ -188,7 +214,7 @@ class _ControllerState extends State<Controller> {
                     ],
                   ),
                   onTap: () {
-                    setState(() => this.index = 2);
+                    setState(() => index = 2);
                     Navigator.pop(context);
                   }),
               ListTile(
@@ -213,7 +239,7 @@ class _ControllerState extends State<Controller> {
                   ],
                 ),
                 onTap: () {
-                  setState(() => this.index = 3);
+                  setState(() => index = 3);
                   Navigator.pop(context);
                 },
               ),
@@ -239,7 +265,7 @@ class _ControllerState extends State<Controller> {
                   ],
                 ),
                 onTap: () {
-                  setState(() => this.index = 4);
+                  setState(() => index = 4);
                   Navigator.pop(context);
                 },
               ),
@@ -265,7 +291,7 @@ class _ControllerState extends State<Controller> {
                   ],
                 ),
                 onTap: () {
-                  setState(() => this.index = 5);
+                  setState(() => index = 5);
                   Navigator.pop(context);
                 },
               ),
@@ -291,7 +317,7 @@ class _ControllerState extends State<Controller> {
                   ],
                 ),
                 onTap: () {
-                  setState(() => this.index = 6);
+                  setState(() => index = 6);
                   Navigator.pop(context);
                 },
               ),
@@ -360,12 +386,13 @@ class _ControllerState extends State<Controller> {
             style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
-
               fontWeight: FontWeight.bold,
             ),
           ),
           Padding(
-            padding: (isSelected[1]?EdgeInsets.fromLTRB(8, 0, 0, 0): EdgeInsets.fromLTRB(0, 0, 8, 0)),
+            padding: (isSelected[1]
+                ? const EdgeInsets.fromLTRB(8, 0, 0, 0)
+                : const EdgeInsets.fromLTRB(0, 0, 8, 0)),
             child: Text(
               S.of(context).dance, //Arous Al-shamal
               style: const TextStyle(

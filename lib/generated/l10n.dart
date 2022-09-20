@@ -60,10 +60,10 @@ class S {
     );
   }
 
-  /// ` The north's pride`
+  /// ` The north's bride`
   String get dance {
     return Intl.message(
-      ' The north\'s pride',
+      ' The north\'s bride',
       name: 'dance',
       desc: '',
       args: [],

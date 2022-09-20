@@ -73,19 +73,11 @@ class _MyAppState extends State<MyApp> {
               SizedBox(
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: Image.asset("assets/splash_logo.png")),
-              SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  child: ShaderMask(
-                    shaderCallback: (bounds) {
-                      return const LinearGradient(
-                        colors: [Colors.green, Colors.red],
-                      ).createShader(bounds);
-                    },
-                    blendMode: BlendMode.srcATop,
-                    child: Image.asset(
-                      "assets/loading.gif",
+              const SizedBox(
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
                     ),
-                  ))
+                  )
             ],
           ),
         ),
