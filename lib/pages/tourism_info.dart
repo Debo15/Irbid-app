@@ -44,7 +44,6 @@ class _TourismInfoState extends State<TourismInfo> {
                 isSelected: isSelected,
                 selectedColor: Colors.green[900],
                 color: Colors.white,
-                // borderColor: Colors.transparent,
                 fillColor: Colors.green.shade300,
                 textStyle: const TextStyle(fontWeight: FontWeight.bold),
                 renderBorder: true,
