@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:irbid/util/map_category.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-
-import '../toggleMenu.dart';
-import '../util/tourism_category.dart';
+import 'package:irbid/pages/tourism_info.dart';
 
 class Map extends StatefulWidget {
   final MapCategory category;
@@ -20,8 +18,19 @@ class Map extends StatefulWidget {
 class _MapState extends State<Map> {
   late final PanelController _pc = PanelController();
   final Completer<GoogleMapController> _controller = Completer();
-  Set<Marker> markers = {};
+
+  Set<Marker> markers = {
+    const Marker(markerId: MarkerId("hidden"), visible: false)
+  };
+  Set<Marker> historicalTourismMarkers = {};
+  Set<Marker> medicalTourismMarkers = {};
+  Set<Marker> wildlifeTourismMarkers = {};
+
+  String currentBodyText = "Default Text.";
+  String collapsedText = "Default collapsed text.";
+
   bool markerPressed = false;
+
   BorderRadiusGeometry radius = const BorderRadius.only(
     topLeft: Radius.circular(24.0),
     topRight: Radius.circular(24.0),
@@ -31,6 +40,8 @@ class _MapState extends State<Map> {
     target: LatLng(32.36, 35.8123901),
     zoom: 10,
   );
+
+  final List<bool> isSelected = <bool>[false, false, true];
 
   @override
   void initState() {
@@ -64,36 +75,48 @@ class _MapState extends State<Map> {
             markerPressed = true;
           }),
     };
-    Set<Marker> tourismMarkers = {
+    historicalTourismMarkers = {
       Marker(
           markerId: const MarkerId("JUST"),
           position: const LatLng(32.6101734, 35.5909965),
           onTap: () {
             _pc.open();
-            markerPressed = true;
+            setState(() {
+              markerPressed = true;
+              currentBodyText = "This is a historical site yada yada.";
+              collapsedText = "This is the first historical site.";
+            });
           }),
-      Marker(
-          markerId: const MarkerId("Yarmouk"),
-          position: const LatLng(32.5363651, 35.852914),
-          onTap: () {
-            _pc.open();
-            markerPressed = true;
-          }),
-      Marker(
-          markerId: const MarkerId("Irbid National University"),
-          position: const LatLng(32.4063299, 35.9503206),
-          onTap: () {
-            _pc.open();
-            markerPressed = true;
-          }),
+    };
+
+    medicalTourismMarkers = {
       Marker(
           markerId: const MarkerId("Jadara"),
           position: const LatLng(32.4222541, 35.9473864),
           onTap: () {
             _pc.open();
-            markerPressed = true;
+            setState(() {
+              markerPressed = true;
+              currentBodyText = "This is a medical site yada yada.";
+              collapsedText = "This is the first medical site.";
+            });
           }),
     };
+
+    wildlifeTourismMarkers = {
+      Marker(
+          markerId: const MarkerId("Yarmouk"),
+          position: const LatLng(32.5363651, 35.852914),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              currentBodyText = "This is a wildlife site yada yada.";
+              collapsedText = "This is the first wildlife site.";
+            });
+          }),
+    };
+
     switch (widget.category) {
       case MapCategory.education:
         markers = educationMarkers;
@@ -102,7 +125,7 @@ class _MapState extends State<Map> {
         // TODO: Handle this case.
         break;
       case MapCategory.tourism:
-        markers = tourismMarkers;
+        markers.addAll(historicalTourismMarkers);
         break;
     }
     super.initState();
@@ -113,13 +136,13 @@ class _MapState extends State<Map> {
     return Scaffold(
       body: SlidingUpPanel(
           controller: _pc,
-          panel: const Center(
-            child: Text("Hello world"),
+          panel: Center(
+            child: Text(currentBodyText),
           ),
-          collapsed: const Center(
+          collapsed: Center(
             child: Text(
-              "This is the collapsed Widget",
-              style: TextStyle(color: Colors.black),
+              collapsedText,
+              style: const TextStyle(color: Colors.black),
             ),
           ),
           borderRadius: const BorderRadius.only(
@@ -147,20 +170,106 @@ class _MapState extends State<Map> {
     ));
   }
 
+  ButtonStyle notSelectedStyle = ButtonStyle(
+      overlayColor: MaterialStateProperty.all(Colors.green),
+      splashFactory: NoSplash.splashFactory,
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+              side: BorderSide(color: Colors.green.shade500))),
+      foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+      backgroundColor: MaterialStateProperty.all<Color>(Colors.green.shade100));
+
+  ButtonStyle selectedStyle = ButtonStyle(
+      overlayColor: MaterialStateProperty.all(Colors.green.shade100),
+      splashFactory: NoSplash.splashFactory,
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+              side: BorderSide(color: Colors.green.shade500))),
+      foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+      backgroundColor: MaterialStateProperty.all<Color>(Colors.green));
+
   Widget tourismMap() {
     return (Stack(
       children: [
         regularMap(),
-        Positioned(
-            bottom: MediaQuery.of(context).size.height * 0.1,
-            left: MediaQuery.of(context).size.width * 0.265,
-            height: 300,
-            child: ToggleTourismTypes(
-              onPress: () => null,
-            )),
+        const Padding(
+          //fill the background of the icon.
+          padding: EdgeInsets.fromLTRB(16, 16, 0, 0),
+          child: CircleAvatar(
+            backgroundColor: Colors.white,
+          ),
+        ),
+        IconButton(
+          onPressed: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const TourismInfo()));
+          },
+          color: Colors.blueAccent,
+          icon: const Icon(Icons.info, size: 55),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.72,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              TextButton(
+                style: isSelected[0] ? selectedStyle : notSelectedStyle,
+                onPressed: () {
+                  setState(() {
+                    isSelected[0] = !isSelected[0];
+                    if (isSelected[0]) {
+                      markers.addAll(wildlifeTourismMarkers);
+                    } else {
+                      markers.removeAll(wildlifeTourismMarkers);
+                    }
+                  });
+                },
+                child: const Text(
+                  "الطبيعية",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              TextButton(
+                style: isSelected[1] ? selectedStyle : notSelectedStyle,
+                onPressed: () {
+                  setState(() {
+                    isSelected[1] = !isSelected[1];
+                    if (isSelected[1]) {
+                      markers.addAll(medicalTourismMarkers);
+                    } else {
+                      markers.removeAll(medicalTourismMarkers);
+                    }
+                  });
+                },
+                child: const Text(
+                  "العلاجية",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              TextButton(
+                style: isSelected[2] ? selectedStyle : notSelectedStyle,
+                onPressed: () {
+                  setState(() {
+                    isSelected[2] = !isSelected[2];
+                    if (isSelected[2]) {
+                      markers.addAll(historicalTourismMarkers);
+                    } else {
+                      markers.removeAll(historicalTourismMarkers);
+                    }
+                  });
+                },
+                child: const Text(
+                  "التاريخية",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          ),
+        )
       ],
     ));
   }
-
-
 }

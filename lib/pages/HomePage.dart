@@ -5,8 +5,6 @@ import 'package:irbid/generated/l10n.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  // static const String _title = 'Home page';
-
   @override
   Widget build(BuildContext context) {
     return const MyStatefulWidget();
@@ -40,10 +38,6 @@ class _HomePage extends State<MyStatefulWidget> with TickerProviderStateMixin {
               child: Text(S.of(context).introIrbid,
                 style: const TextStyle(fontSize: 16),
               ),
-            //   child: const Directionality(
-            //     textDirection: TextDirection.rtl,
-            //     child: Text(IrbidIntro),
-            //   ),
             ),
             Row(
 

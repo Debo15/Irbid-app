@@ -5,7 +5,6 @@ import 'package:irbid/pages/Education.dart';
 import 'package:irbid/pages/Health.dart';
 import 'package:irbid/pages/History.dart';
 import 'package:irbid/pages/HomePage.dart';
-import 'package:irbid/pages/Settings.dart';
 import 'package:irbid/pages/Tourism.dart';
 import 'package:provider/provider.dart';
 import 'generated/l10n.dart';
@@ -29,7 +28,6 @@ class _ControllerState extends State<Controller> {
     EducationPage(),
     TourismPage(),
     HealthPage(),
-    SettingPage(),
   ];
 
   final List<bool> isSelected = [false, true];
