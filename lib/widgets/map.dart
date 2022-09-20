@@ -169,11 +169,16 @@ class MapState extends State<Map> {
         controller: sc,
         children: [
           ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(24.0),
+                topRight: Radius.circular(24.0),
+              ),
               child: Image.asset(
                 img,
                 width: MediaQuery.of(context).size.width,
               )),
+          Text(swipeUpTitle,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
           Text(currentBodyText),
         ],
       ),
