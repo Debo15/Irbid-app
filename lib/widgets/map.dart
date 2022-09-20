@@ -31,7 +31,7 @@ class MapState extends State<Map> {
   Set<Marker> wildlifeTourismMarkers = {};
 
   String img = "";
-  String swipeUpTitle = "";
+  String swipeUpTitle = "Explore irbid";
   String currentBodyText = "";
   String collapsedText = "Default collapsed text.";
   bool markerPressed = false;
@@ -131,7 +131,7 @@ class MapState extends State<Map> {
         markers = educationMarkers;
         break;
       case MapCategory.health:
-      // TODO: Handle this case.
+        // TODO: Handle this case.
         break;
       case MapCategory.tourism:
         markers.addAll(historicalTourismMarkers);
@@ -150,33 +150,38 @@ class MapState extends State<Map> {
   @override
   Widget build(BuildContext context) {
     return SlidingUpPanel(
-        controller: _pc,
-        panel: Expanded(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(5, 20, 5, 0),
-            child: ListView(
-              children: <Widget>[
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.asset(img, width: MediaQuery.of(context).size.width,)
-                ),
-                Text(swipeUpTitle, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-                Text(currentBodyText),
-              ],
-            ),
-          ),
-        ),
-        collapsed: Center(
+      controller: _pc,
+      parallaxEnabled: true,
+      collapsed: Container(
+        decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(24.0),
+              topRight: Radius.circular(24.0),
+            )),
+        child: Center(
           child: Text(
-            collapsedText,
-            style: const TextStyle(color: Colors.black),
+            swipeUpTitle,
           ),
         ),
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(25.0), topRight: Radius.circular(18.0)),
-        body: widget.category == MapCategory.tourism
-            ? tourismMap()
-            : regularMap());
+      ),
+      panelBuilder: (sc) => ListView(
+        controller: sc,
+        children: [
+          ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: Image.asset(
+                img,
+                width: MediaQuery.of(context).size.width,
+              )),
+          Text(currentBodyText),
+        ],
+      ),
+      borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(25.0), topRight: Radius.circular(18.0)),
+      body:
+          widget.category == MapCategory.tourism ? tourismMap() : regularMap(),
+    );
   }
 
   Widget regularMap() {
@@ -237,15 +242,15 @@ class MapState extends State<Map> {
             onPressed: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(
-                  builder: (context) => const TourismInfo()))
+                      builder: (context) => const TourismInfo()))
                   .then((value) => {
-                setState(() {
-                  currentLocale = context
-                      .read<LanguageChangeProvider>()
-                      .currentLocale
-                      .languageCode;
-                })
-              });
+                        setState(() {
+                          currentLocale = context
+                              .read<LanguageChangeProvider>()
+                              .currentLocale
+                              .languageCode;
+                        })
+                      });
             },
             color: Colors.blueAccent,
             icon: const Icon(Icons.info, size: 55),
