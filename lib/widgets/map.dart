@@ -28,6 +28,7 @@ class MapState extends State<Map> {
   Set<Marker> historicalTourismMarkers = {};
   Set<Marker> medicalTourismMarkers = {};
   Set<Marker> wildlifeTourismMarkers = {};
+  Set<Marker> healthMarkers = {};
 
   String img = "";
   String swipeUpTitle = "Explore irbid";
@@ -207,12 +208,110 @@ class MapState extends State<Map> {
           }),
     };
 
+    healthMarkers = {
+      Marker(
+          markerId: const MarkerId("abdullah1"),
+          position: const LatLng(32.501454, 35.992111),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/abdullah.png";
+              swipeUpTitle = S.of(context).abdullah1;
+              currentBodyText = S.of(context).abdullah1Talk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("basmah"),
+          position: const LatLng(32.557426, 35.839134),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/Basma.jfif";
+              swipeUpTitle = S.of(context).basmah;
+              currentBodyText = S.of(context).basmahTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("bade3h"),
+          position: const LatLng(32.529073, 35.834354),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/bade3h.png";
+              swipeUpTitle = S.of(context).bade3h;
+              currentBodyText = S.of(context).bade3hTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("rahbat"),
+          position: const LatLng(32.526286, 35.869365),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/rahbat.jfif";
+              swipeUpTitle = S.of(context).rahbat;
+              currentBodyText = S.of(context).rahbatTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("islamic"),
+          position: const LatLng(32.549091, 35.859162),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/IslamicHos.jpg";
+              swipeUpTitle = S.of(context).islamic;
+              currentBodyText = S.of(context).islamicTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("specialty"),
+          position: const LatLng(32.534225, 35.862602),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/specialty.jpg";
+              swipeUpTitle = S.of(context).specialty;
+              currentBodyText = S.of(context).specialtyTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("ibnNafees"),
+          position: const LatLng(32.536238, 35.867349),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/ibnNafees.jpg";
+              swipeUpTitle = S.of(context).ibnNafees;
+              currentBodyText = S.of(context).ibnNafeesTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("aydon"),
+          position: const LatLng(32.503402, 35.864986),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/aydon.jfif";
+              swipeUpTitle = S.of(context).aydon;
+              currentBodyText = S.of(context).aydonTalk;
+            });
+          }),
+    };
     switch (widget.category) {
       case MapCategory.education:
         markers = educationMarkers;
         break;
       case MapCategory.health:
-        // TODO: Handle this case.
+        markers = healthMarkers;
         break;
       case MapCategory.tourism:
         markers.addAll(historicalTourismMarkers);
@@ -258,9 +357,15 @@ class MapState extends State<Map> {
                 img,
                 width: MediaQuery.of(context).size.width,
               )),
-          Text(swipeUpTitle,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-          Text(currentBodyText),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(swipeUpTitle,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(currentBodyText),
+          ),
         ],
       ),
       borderRadius: const BorderRadius.only(
