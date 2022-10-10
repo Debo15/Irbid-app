@@ -7,6 +7,6 @@ class HealthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Map(category: MapCategory.health);
+    return Stack(children: [Map(category: MapCategory.health), Text("حدث خطأ بسيط")]);
   }
 }

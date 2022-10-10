@@ -231,7 +231,6 @@ class MapState extends State<Map> {
   @override
   Widget build(BuildContext context) {
     return SlidingUpPanel(
-<<<<<<< Updated upstream
       controller: _pc,
       parallaxEnabled: true,
       collapsed: Container(
@@ -242,29 +241,6 @@ class MapState extends State<Map> {
               topRight: Radius.circular(24.0),
             )),
         child: Center(
-=======
-        controller: _pc,
-        panel: Expanded(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(5, 20, 5, 0),
-            child: ListView(
-              children: <Widget>[
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.asset(
-                      img,
-                      width: MediaQuery.of(context).size.width,
-                    )),
-                Text(swipeUpTitle,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-                Text(currentBodyText),
-              ],
-            ),
-          ),
-        ),
-        collapsed: Center(
->>>>>>> Stashed changes
           child: Text(
             swipeUpTitle,
           ),
@@ -274,7 +250,7 @@ class MapState extends State<Map> {
         controller: sc,
         children: [
           ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(24.0),
                 topRight: Radius.circular(24.0),
               ),
@@ -290,7 +266,7 @@ class MapState extends State<Map> {
       borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(25.0), topRight: Radius.circular(18.0)),
       body:
-          widget.category == MapCategory.tourism ? tourismMap() : regularMap(),
+      widget.category == MapCategory.tourism ? tourismMap() : regularMap(),
     );
   }
 
@@ -352,15 +328,15 @@ class MapState extends State<Map> {
             onPressed: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(
-                      builder: (context) => const TourismInfo()))
+                  builder: (context) => const TourismInfo()))
                   .then((value) => {
-                        setState(() {
-                          currentLocale = context
-                              .read<LanguageChangeProvider>()
-                              .currentLocale
-                              .languageCode;
-                        })
-                      });
+                setState(() {
+                  currentLocale = context
+                      .read<LanguageChangeProvider>()
+                      .currentLocale
+                      .languageCode;
+                })
+              });
             },
             color: Colors.blueAccent,
             icon: const Icon(Icons.info, size: 55),
