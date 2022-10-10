@@ -16,11 +16,11 @@ class _TourismInfoState extends State<TourismInfo> {
   final double widthImage = 150;
 
   final List<String> IMGs = const <String>[
-    'assets/Umm-Qais.jpg',
-    'assets/Umm-Qais2.jpg',
-    'assets/Umm-Qais3.jpg',
-    'assets/Umm-Qais4.jpg',
-    'assets/Umm-Qais5.jpg',
+    'assets/umQaisMap.jpg',
+    'assets/pella.jpg',
+    'assets/rashrash.jpg',
+    'assets/arays.jpg',
+    'assets/hemmah.jfif',
     'assets/Umm-Qais6.jpg'
   ];
   List<bool> isSelected = [];

@@ -5,7 +5,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:irbid/util/map_category.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:irbid/pages/tourism_info.dart';
-
 import '../generated/l10n.dart';
 import '../languageChangeProvider.dart';
 import 'package:provider/provider.dart';
@@ -56,72 +55,154 @@ class MapState extends State<Map> {
     Set<Marker> educationMarkers = {
       Marker(
           markerId: const MarkerId("JUST"),
-          position: const LatLng(32.4950392, 35.989037),
-          onTap: () {
-            _pc.open();
-            markerPressed = true;
-          }),
-      Marker(
-          markerId: const MarkerId("Yarmouk"),
-          position: const LatLng(32.5363651, 35.852914),
-          onTap: () {
-            _pc.open();
-            markerPressed = true;
-          }),
-      Marker(
-          markerId: const MarkerId("Irbid National University"),
-          position: const LatLng(32.4063299, 35.9503206),
-          onTap: () {
-            _pc.open();
-            markerPressed = true;
-          }),
-      Marker(
-          markerId: const MarkerId("Jadara"),
-          position: const LatLng(32.4222541, 35.9473864),
-          onTap: () {
-            _pc.open();
-            markerPressed = true;
-          }),
-    };
-    historicalTourismMarkers = {
-      Marker(
-          markerId: const MarkerId("JUST"),
-          position: const LatLng(32.6101734, 35.5909965),
+          position: const LatLng(32.499780602037994, 35.9923545677307),
           onTap: () {
             _pc.open();
             setState(() {
               markerPressed = true;
-              img = "assets/Umm-Qais4.jpg";
-              swipeUpTitle = S.of(context).irbidCul;
-              currentBodyText = "This is a historical site yada yada.";
+              img = "assets/justEdited.jpg";
+              swipeUpTitle = S.of(context).just;
+              currentBodyText = S.of(context).justTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("Yarmouk"),
+          position: const LatLng(32.537977978560164, 35.85526475354011),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/yarmouk.jpg";
+              swipeUpTitle = S.of(context).yarmouk;
+              currentBodyText = S.of(context).yarmoukTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("Jadara"),
+          position: const LatLng(32.42250045841651, 35.947411938240734),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/jadara3.jpg";
+              swipeUpTitle = S.of(context).jadara;
+              currentBodyText = S.of(context).jadaraTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("Irbid national university"),
+          position: const LatLng(32.40652009931654, 35.950331326514934),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/irbidnat3.jpg";
+              swipeUpTitle = S.of(context).irbidNational;
+              currentBodyText = S.of(context).irbidNationalTalk;
+            });
+          }),
+    };
+    historicalTourismMarkers = {
+      Marker(
+          markerId: const MarkerId("umQais"),
+          position: const LatLng(32.65554403869938, 35.687965624227594),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/umQaisMap.jpg";
+              swipeUpTitle = S.of(context).umQais;
+              currentBodyText = S.of(context).umQaisTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("TabaqetFahl"),
+          position: const LatLng(32.438794758312945, 35.59616317731259),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/pella.jpg";
+              swipeUpTitle = S.of(context).pella;
+              currentBodyText = S.of(context).pellaTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("Saraya"),
+          position: const LatLng(32.55794965583602, 35.8480613460222),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/saraya.jpg";
+              swipeUpTitle = S.of(context).saraya;
+              currentBodyText = S.of(context).sarayaTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("arar"),
+          position: const LatLng(32.55755584490767, 35.8466815494231),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/Arrar.jfif";
+              swipeUpTitle = S.of(context).ararHouse;
+              currentBodyText = S.of(context).ararHouseTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("muath"),
+          position: const LatLng(32.60322729386032, 35.61468272685095),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/muath.jfif";
+              swipeUpTitle = S.of(context).muath;
+              currentBodyText = S.of(context).muathTalk;
             });
           }),
     };
 
     medicalTourismMarkers = {
       Marker(
-          markerId: const MarkerId("Jadara"),
-          position: const LatLng(32.4222541, 35.9473864),
+          markerId: const MarkerId("shuna"),
+          position: const LatLng(32.61122264111856, 35.608291476341165),
           onTap: () {
             _pc.open();
             setState(() {
               markerPressed = true;
-              currentBodyText = "This is a medical site yada yada.";
-              collapsedText = "This is the first medical site.";
+              img = "assets/hemmah.jfif";
+              swipeUpTitle = S.of(context).shuna;
+              currentBodyText = S.of(context).shunaTalk;
             });
           }),
     };
 
     wildlifeTourismMarkers = {
       Marker(
-          markerId: const MarkerId("Yarmouk"),
-          position: const LatLng(32.5363651, 35.852914),
+          markerId: const MarkerId("rashrash"),
+          position: const LatLng(32.394121888581644, 35.622390083350666),
           onTap: () {
             _pc.open();
             setState(() {
               markerPressed = true;
-              currentBodyText = "This is a wildlife site yada yada.";
-              collapsedText = "This is the first wildlife site.";
+              img = "assets/rashrash.jpg";
+              swipeUpTitle = S.of(context).rashrash;
+              currentBodyText = S.of(context).rashrashTalk;
+            });
+          }),
+      Marker(
+          markerId: const MarkerId("Arays"),
+          position: const LatLng(32.703645043626686, 35.697083111629134),
+          onTap: () {
+            _pc.open();
+            setState(() {
+              markerPressed = true;
+              img = "assets/arays.jpg";
+              swipeUpTitle = S.of(context).arays;
+              currentBodyText = S.of(context).araysTalk;
             });
           }),
     };
@@ -150,6 +231,7 @@ class MapState extends State<Map> {
   @override
   Widget build(BuildContext context) {
     return SlidingUpPanel(
+<<<<<<< Updated upstream
       controller: _pc,
       parallaxEnabled: true,
       collapsed: Container(
@@ -160,6 +242,29 @@ class MapState extends State<Map> {
               topRight: Radius.circular(24.0),
             )),
         child: Center(
+=======
+        controller: _pc,
+        panel: Expanded(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(5, 20, 5, 0),
+            child: ListView(
+              children: <Widget>[
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.asset(
+                      img,
+                      width: MediaQuery.of(context).size.width,
+                    )),
+                Text(swipeUpTitle,
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                Text(currentBodyText),
+              ],
+            ),
+          ),
+        ),
+        collapsed: Center(
+>>>>>>> Stashed changes
           child: Text(
             swipeUpTitle,
           ),
